@@ -5,13 +5,13 @@ class ClienteModel {
 
   ClienteModel.fromJson(Map<String, dynamic> json) {
     cliente =
-        json['cliente'] != null ? new Cliente.fromJson(json['cliente']) : null;
+        json['cliente'] != null ? Cliente.fromJson(json['cliente']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.cliente != null) {
-      data['cliente'] = this.cliente!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (cliente != null) {
+      data['cliente'] = cliente!.toJson();
     }
     return data;
   }
@@ -51,23 +51,23 @@ class Cliente {
     if (json['contatos'] != null) {
       contatos = <Contatos>[];
       json['contatos'].forEach((v) {
-        contatos!.add(new Contatos.fromJson(v));
+        contatos!.add(Contatos.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['codigo'] = this.codigo;
-    data['razao_social'] = this.razaoSocial;
-    data['nomeFantasia'] = this.nomeFantasia;
-    data['cnpj'] = this.cnpj;
-    data['ramo_atividade'] = this.ramoAtividade;
-    data['endereco'] = this.endereco;
-    data['status'] = this.status;
-    if (this.contatos != null) {
-      data['contatos'] = this.contatos!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['codigo'] = codigo;
+    data['razao_social'] = razaoSocial;
+    data['nomeFantasia'] = nomeFantasia;
+    data['cnpj'] = cnpj;
+    data['ramo_atividade'] = ramoAtividade;
+    data['endereco'] = endereco;
+    data['status'] = status;
+    if (contatos != null) {
+      data['contatos'] = contatos!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -108,16 +108,16 @@ class Contatos {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['nome'] = this.nome;
-    data['telefone'] = this.telefone;
-    data['celular'] = this.celular;
-    data['conjuge'] = this.conjuge;
-    data['tipo'] = this.tipo;
-    data['time'] = this.time;
-    data['e_mail'] = this.eMail;
-    data['data_nascimento'] = this.dataNascimento;
-    data['dataNascimentoConjuge'] = this.dataNascimentoConjuge;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['nome'] = nome;
+    data['telefone'] = telefone;
+    data['celular'] = celular;
+    data['conjuge'] = conjuge;
+    data['tipo'] = tipo;
+    data['time'] = time;
+    data['e_mail'] = eMail;
+    data['data_nascimento'] = dataNascimento;
+    data['dataNascimentoConjuge'] = dataNascimentoConjuge;
     return data;
   }
 }
