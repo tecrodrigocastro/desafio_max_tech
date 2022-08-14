@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class SalesReport extends StatefulWidget {
   const SalesReport({Key? key}) : super(key: key);
+  static const routeName = '/report';
 
   @override
   State<SalesReport> createState() => _SalesReportState();

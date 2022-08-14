@@ -1,25 +1,38 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:async';
+
+import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 
 import 'package:desafio_maxima_tech/models/client_model.dart';
 import 'package:desafio_maxima_tech/repository/client_repository.dart';
 import 'package:desafio_maxima_tech/screens/home/home_screen.dart';
-import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  SplashScreen({Key? key}) : super(key: key);
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  final repository = ClientRepository();
-
   @override
   void initState() {
     super.initState();
     _timer();
+    setState(() {
+      init();
+    });
+  }
+
+  Cliente? cliente;
+
+  Future init() async {
+    final repository = ClientRepository();
+    final json = await repository.fetchClient();
+    setState(() {
+      cliente = json.cliente;
+    });
   }
 
   @override
@@ -52,11 +65,11 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(
       const Duration(seconds: 4),
       () {
-        Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(
-              builder: (context) => const HomePage(),
-            ),
-            (route) => false);
+        Navigator.of(context).pushNamedAndRemoveUntil(
+          '/home',
+          (route) => false,
+          arguments: cliente,
+        );
       },
     );
   }

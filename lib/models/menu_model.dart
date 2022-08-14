@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class MenuModel {
   final String title;
   final Icon icon;
-  final Widget screen;
+  final String screen;
   MenuModel({
     required this.title,
     required this.icon,

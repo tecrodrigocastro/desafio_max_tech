@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+  static const routeName = '/home';
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -17,11 +18,12 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    homeController.start();
   }
 
   @override
   Widget build(BuildContext context) {
+    Cliente? json;
+    json = ModalRoute.of(context)!.settings.arguments as Cliente;
     List<MenuModel> menu = homeController.list();
 
     double sizeW = MediaQuery.of(context).size.width;
@@ -29,7 +31,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.lightBlue.shade900,
-        title: Text(''),
+        title: const Text('maxApp'),
       ),
       body: SizedBox(
         child: Padding(
@@ -45,10 +47,9 @@ class _HomePageState extends State<HomePage> {
                       homeController.list().length,
                       (index) => InkWell(
                         onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => menu[index].screen,
-                            ),
+                          Navigator.of(context).pushNamed(
+                            menu[index].screen,
+                            arguments: json,
                           );
                         },
                         child: Card(
