@@ -1,4 +1,6 @@
+import 'package:desafio_maxima_tech/models/client_model.dart';
 import 'package:desafio_maxima_tech/models/menu_model.dart';
+import 'package:desafio_maxima_tech/repository/client_repository.dart';
 import 'package:desafio_maxima_tech/screens/home/home_controller.dart';
 import 'package:flutter/material.dart';
 
@@ -13,14 +15,21 @@ class _HomePageState extends State<HomePage> {
   final homeController = HomeController();
 
   @override
+  void initState() {
+    super.initState();
+    homeController.start();
+  }
+
+  @override
   Widget build(BuildContext context) {
     List<MenuModel> menu = homeController.list();
+
     double sizeW = MediaQuery.of(context).size.width;
     double sizeH = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.lightBlue.shade900,
-        title: const Text('maxApp'),
+        title: Text(''),
       ),
       body: SizedBox(
         child: Padding(
@@ -34,17 +43,26 @@ class _HomePageState extends State<HomePage> {
                     crossAxisCount: 2,
                     children: List.generate(
                       homeController.list().length,
-                      (index) => Card(
-                        elevation: 3,
-                        shadowColor: Colors.black,
-                        child: Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              menu[index].icon,
-                              const SizedBox(height: 10),
-                              Text(menu[index].title),
-                            ],
+                      (index) => InkWell(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => menu[index].screen,
+                            ),
+                          );
+                        },
+                        child: Card(
+                          elevation: 3,
+                          shadowColor: Colors.black,
+                          child: Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                menu[index].icon,
+                                const SizedBox(height: 10),
+                                Text(menu[index].title),
+                              ],
+                            ),
                           ),
                         ),
                       ),

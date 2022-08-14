@@ -1,8 +1,21 @@
+import 'package:desafio_maxima_tech/models/client_model.dart';
 import 'package:desafio_maxima_tech/models/menu_model.dart';
+import 'package:desafio_maxima_tech/repository/client_repository.dart';
+import 'package:desafio_maxima_tech/screens/client/client_screen.dart';
+import 'package:desafio_maxima_tech/screens/gift/gift_screen.dart';
+import 'package:desafio_maxima_tech/screens/home/home_screen.dart';
+import 'package:desafio_maxima_tech/screens/report/sales_report_screen.dart';
+import 'package:desafio_maxima_tech/screens/settings/settings_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomeController {
+  final repository = ClientRepository();
+  //ClienteModel? model;
+  Future start() async {
+    await repository.fetchClient();
+  }
+
   List<MenuModel> list() {
     final data = [
       {
@@ -12,6 +25,7 @@ class HomeController {
           color: Colors.blue.shade900,
           size: 60,
         ),
+        'screen': const ClientScreen(),
       },
       {
         'title': 'Pedidos',
@@ -20,6 +34,7 @@ class HomeController {
           color: Colors.blue.shade900,
           size: 60,
         ),
+        'screen': const GiftScreen(),
       },
       {
         'title': 'Resumo de Vendas',
@@ -28,6 +43,7 @@ class HomeController {
           color: Colors.blue.shade900,
           size: 60,
         ),
+        'screen': const SalesReport(),
       },
       {
         'title': 'Ferramentas',
@@ -36,6 +52,7 @@ class HomeController {
           color: Colors.blue.shade900,
           size: 60,
         ),
+        'screen': const SettingsScreen(),
       },
     ];
 

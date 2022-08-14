@@ -11,7 +11,7 @@ class ClientRepository {
     final response = await http.get(Uri.parse(url));
     final json = jsonDecode(response.body);
     final client = ClienteModel.fromJson(json);
-    print(client.cliente!.nomeFantasia);
+
     return client;
   }
 }

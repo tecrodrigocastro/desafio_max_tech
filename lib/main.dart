@@ -1,8 +1,7 @@
-import 'package:desafio_maxima_tech/repository/client_repository.dart';
 import 'package:desafio_maxima_tech/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 
-Future main() async {
+void main() {
   runApp(const MyApp());
 }
 

@@ -28,16 +28,17 @@ class Cliente {
   String? status;
   List<Contatos>? contatos;
 
-  Cliente(
-      {this.id,
-      this.codigo,
-      this.razaoSocial,
-      this.nomeFantasia,
-      this.cnpj,
-      this.ramoAtividade,
-      this.endereco,
-      this.status,
-      this.contatos});
+  Cliente({
+    this.id,
+    this.codigo,
+    this.razaoSocial,
+    this.nomeFantasia,
+    this.cnpj,
+    this.ramoAtividade,
+    this.endereco,
+    this.status,
+    this.contatos,
+  });
 
   Cliente.fromJson(Map<String, dynamic> json) {
     id = json['id'];

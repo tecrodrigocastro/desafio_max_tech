@@ -1,8 +1,10 @@
 import 'dart:async';
 
+import 'package:desafio_maxima_tech/models/client_model.dart';
 import 'package:desafio_maxima_tech/repository/client_repository.dart';
 import 'package:desafio_maxima_tech/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -13,10 +15,10 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   final repository = ClientRepository();
+
   @override
   void initState() {
     super.initState();
-    final data = repository.fetchClient();
     _timer();
   }
 
