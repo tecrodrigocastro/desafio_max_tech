@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
                   child: GridView.count(
                     crossAxisCount: 2,
                     children: List.generate(
-                      homeController.list().length,
+                      menu.length,
                       (index) => InkWell(
                         onTap: () {
                           Navigator.of(context).pushNamed(

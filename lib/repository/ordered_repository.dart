@@ -9,8 +9,8 @@ class OrderedRepository {
 
   Future<OrderedModel> fetchOrdered() async {
     final response = await http.get(Uri.parse(url));
-
-    final json = jsonDecode(response.body);
+    final decode = utf8.decode(response.bodyBytes);
+    final json = jsonDecode(decode);
     final order = OrderedModel.fromJson(json);
     return order;
   }

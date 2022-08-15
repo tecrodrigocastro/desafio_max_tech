@@ -1,8 +1,8 @@
 import 'package:desafio_maxima_tech/models/client_model.dart';
 import 'package:desafio_maxima_tech/repository/client_repository.dart';
 import 'package:desafio_maxima_tech/screens/client/client_screen.dart';
-import 'package:desafio_maxima_tech/screens/gift/gift_screen.dart';
 import 'package:desafio_maxima_tech/screens/home/home_screen.dart';
+import 'package:desafio_maxima_tech/screens/order/ordered.dart';
 import 'package:desafio_maxima_tech/screens/report/sales_report_screen.dart';
 import 'package:desafio_maxima_tech/screens/settings/settings_screen.dart';
 import 'package:desafio_maxima_tech/screens/splash/splash_screen.dart';

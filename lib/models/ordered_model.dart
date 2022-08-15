@@ -1,13 +1,13 @@
 class OrderedModel {
-  List<Pedidos>? pedidos;
+  late final List<Pedidos> pedidos;
 
-  OrderedModel({this.pedidos});
+  OrderedModel({required this.pedidos});
 
   OrderedModel.fromJson(Map<String, dynamic> json) {
     if (json['pedidos'] != null) {
       pedidos = <Pedidos>[];
       json['pedidos'].forEach((v) {
-        pedidos!.add(new Pedidos.fromJson(v));
+        pedidos.add(new Pedidos.fromJson(v));
       });
     }
   }
@@ -15,7 +15,7 @@ class OrderedModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     if (this.pedidos != null) {
-      data['pedidos'] = this.pedidos!.map((v) => v.toJson()).toList();
+      data['pedidos'] = this.pedidos.map((v) => v.toJson()).toList();
     }
     return data;
   }
